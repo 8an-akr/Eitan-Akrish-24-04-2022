@@ -1,7 +1,27 @@
 import "./App.css";
+import { Route, useNavigate, Routes } from "react-router-dom";
+import React, { useEffect } from "react";
+import WeatherPage from "./Components/Pages/WeatherPage/WeatherPage";
+import Favorites from "./Components/Pages/Favorites/Favorites";
+import { useSelector } from "react-redux";
 
 function App() {
-  return <div className="App"></div>;
+  const navigate = useNavigate();
+  const page = useSelector((state) => state.page);
+  useEffect(() => {
+    if (page === "favorites") {
+      navigate("/favorites");
+    } else {
+      navigate("/");
+    }
+  }, [page, navigate]);
+
+  return (
+    <Routes>
+      <Route exact path="/" element={<WeatherPage />} />
+      <Route exact path="/favorites" element={<Favorites />} />
+    </Routes>
+  );
 }
 
 export default App;
