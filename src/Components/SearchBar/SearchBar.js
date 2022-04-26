@@ -15,9 +15,9 @@ function SearchBar() {
   const dispatch = useDispatch();
   const [address, setAddress] = useState("");
   const location = useSelector((state) => state.address.latLng);
-  // console.log(location);
+  console.log(location);
   const { data, error, isLoading } = useGetWeatherQuery(location);
-  // console.log(data, error, isLoading);
+  console.log(data, error, isLoading);
   dispatch(cityWeather(data));
   const handleSelect = async (value) => {
     try {

@@ -4,8 +4,6 @@ import { useSelector } from "react-redux";
 function WeatherMain() {
   const weather = useSelector((state) => state.cityWeather.value);
   const address = useSelector((state) => state.address.name);
-  const current = weather.current;
-  console.log(address);
   const months = [
     "January",
     "February",
@@ -24,9 +22,7 @@ function WeatherMain() {
   const year = d.getFullYear();
   const month = months[d.getMonth()];
   const day = d.getDate();
-  const weatherIconURL = `http://openweathermap.org/img/wn/${current.weather[0].icon}.png`;
-
-  // console.log(weather.toString());
+  const weatherIconURL = `http://openweathermap.org/img/wn/${weather.current.weather[0].icon}.png`;
 
   return (
     <div className="main container">
@@ -37,12 +33,17 @@ function WeatherMain() {
             {month} {day}, {year}
           </div>
           <div className="weather">
-            <img src={weatherIconURL} alt={current.weather[0].description} />
-            <div className="weather-type">{current.weather[0].main}</div>
+            <img
+              src={weatherIconURL}
+              alt={weather.current.weather[0].description}
+            />
+            <div className="weather-type">
+              {weather.current.weather[0].main}
+            </div>
           </div>
         </div>
         <div className="tempHighLow">
-          <div className="temp">{current.feels_like}</div>
+          <div className="temp">{weather.current.feels_like}</div>
           <div className="highLow"></div>
         </div>
         <br></br>
