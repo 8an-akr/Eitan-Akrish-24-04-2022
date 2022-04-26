@@ -7,3 +7,18 @@
 .css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
   left: 3% !important;
 }
+
+.autocomplete {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.location-search-input {
+  border-radius: 2rem;
+  width: 90%;
+  padding: 10px;
+  font-size: 1.1rem;
+  margin-top: 1px;
+}

@@ -1,11 +1,11 @@
 import React from "react";
 import "./Header.css";
 import { useSelector, useDispatch } from "react-redux";
-import { toFavorites, toWeather } from "../../redux/actions/page";
+import { favorites, weather } from "../../app/features/page/pageSlice";
 
 function Header() {
   const dispatch = useDispatch();
-  const page = useSelector((state) => state.page);
+  const page = useSelector((state) => state.page.value);
 
   return (
     <div className="header">
@@ -15,7 +15,7 @@ function Header() {
           className={`page-selector page-selector-weather selected-${
             page === "weather"
           }`}
-          onClick={() => dispatch(toWeather())}
+          onClick={() => dispatch(weather())}
         >
           Weather
         </div>
@@ -23,7 +23,7 @@ function Header() {
           className={`page-selector page-selector-favorites selected-${
             page === "favorites"
           }`}
-          onClick={() => dispatch(toFavorites())}
+          onClick={() => dispatch(favorites())}
         >
           Favorites
         </div>

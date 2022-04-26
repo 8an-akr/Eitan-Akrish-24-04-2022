@@ -7,9 +7,10 @@ import { useSelector } from "react-redux";
 
 function App() {
   const navigate = useNavigate();
-  const page = useSelector((state) => state.page);
+  const page = useSelector((state) => state.page.value);
   useEffect(() => {
     if (page === "favorites") {
+      console.log(page);
       navigate("/favorites");
     } else {
       navigate("/");
