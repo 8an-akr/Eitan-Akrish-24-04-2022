@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import WeatherWeekDay from "../WeatherWeekDay/WeatherWeekDay";
+import "./WeatherMain.css";
 
 function WeatherMain() {
   const weather = useSelector((state) => state.cityWeather.value);
@@ -16,7 +17,7 @@ function WeatherMain() {
   const weatherIconURL = `http://openweathermap.org/img/wn/${weather?.daily[0].weather[0].icon}.png`;
 
   return (
-    <div className="main container">
+    <div className="weather-container">
       <div className="today">
         <div className="placeDateWeather">
           <div className="address">{address}</div>
@@ -34,18 +35,18 @@ function WeatherMain() {
           </div>
         </div>
         <div className="tempHighLow">
-          <div className="temp">{weather?.current.feels_like}°</div>
+          <div className="temp">{Math.round(weather?.current.feels_like)}°</div>
           <div className="highLow">
-            {weather?.daily[0].temp.min}° - {weather?.daily[0].temp.max}°
+            {Math.round(weather?.daily[0].temp.min)}° -{" "}
+            {Math.round(weather?.daily[0].temp.max)}°
           </div>
         </div>
-        <br></br>
-        <div className="week">
-          {weather?.daily.map(
-            (day, i) =>
-              i > 0 && <WeatherWeekDay key={i} info={{ i, weather }} />
-          )}
-        </div>
+      </div>
+      <br></br>
+      <div className="week">
+        {weather?.daily.map(
+          (day, i) => i > 0 && <WeatherWeekDay key={i} info={{ i, weather }} />
+        )}
       </div>
     </div>
   );

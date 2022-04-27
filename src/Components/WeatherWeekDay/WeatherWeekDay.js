@@ -14,8 +14,8 @@ function WeatherWeekDay({ info }) {
   }
 
   return (
-    <div className={i}>
-      <div className="day">{addDays(i)}</div>
+    <div className={`day`}>
+      <div className="weekday">{addDays(i)}</div>
       <div className="forcast">
         <div className="weather-icon">
           <img
@@ -24,7 +24,8 @@ function WeatherWeekDay({ info }) {
           />
         </div>
         <div className="forcast-highLow">
-          {weather?.daily[i].temp.min}° - {weather?.daily[i].temp.max}
+          {Math.round(weather?.daily[i].temp.min)}°-
+          {Math.round(weather?.daily[i].temp.max)}°
         </div>
       </div>
     </div>
