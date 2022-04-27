@@ -10,7 +10,6 @@ function App() {
   const page = useSelector((state) => state.page.value);
   useEffect(() => {
     if (page === "favorites") {
-      console.log(page);
       navigate("/favorites");
     } else {
       navigate("/");

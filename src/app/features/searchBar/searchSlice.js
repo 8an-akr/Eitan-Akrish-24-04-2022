@@ -1,10 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  name: "Tel Aviv-Yafo",
-  latLng: {
-    lat: 32.0852999,
-    lng: 34.78176759999999,
+  value: {
+    name: "Tel Aviv-Yafo",
+    latLng: {
+      lat: 32.0852999,
+      lng: 34.78176759999999,
+    },
   },
 };
 

@@ -1,6 +1,7 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 const apiKey = "d094a9b2ee6918b3a5f450e4589ea2ad";
+const unit = "metric";
 // TODO: restrict key
 
 export const weatherApi = createApi({
@@ -11,7 +12,7 @@ export const weatherApi = createApi({
   endpoints: (builder) => ({
     getWeather: builder.query({
       query: ({ lat, lng }) =>
-        `onecall?lat=${lat}&lon=${lng}&exclude=alerts&appid=${apiKey}`,
+        `onecall?lat=${lat}&lon=${lng}&exclude=alerts&appid=${apiKey}&units=${unit}`,
     }),
   }),
 });

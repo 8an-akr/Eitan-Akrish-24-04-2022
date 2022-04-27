@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./SearchBar.css";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -13,19 +13,25 @@ import { cityWeather } from "../../app/features/cityWeather/cityWeatherSlice";
 
 function SearchBar() {
   const dispatch = useDispatch();
+  // const location = useSelector((state) => state.address.latLng);
   const [address, setAddress] = useState("");
-  const location = useSelector((state) => state.address.latLng);
-  console.log(location);
-  const { data, error, isLoading } = useGetWeatherQuery(location);
+  const [location, setLocation] = useState(
+    useSelector((state) => state.address.value)
+  );
+
+  const { data, error, isLoading } = useGetWeatherQuery(location?.latLng);
   console.log(data, error, isLoading);
   dispatch(cityWeather(data));
+
   const handleSelect = async (value) => {
     try {
       setAddress(value);
       const result = await geocodeByAddress(value);
       const latLng = await getLatLng(result[0]);
       const name = result[0].address_components[0].short_name;
+      setLocation({ name, latLng });
       dispatch(searchValue({ name, latLng }));
+      setAddress("");
     } catch (error) {
       console.error("Error", error);
     }
@@ -47,7 +53,8 @@ function SearchBar() {
           />
           <div className="autocomplete-dropdown-container">
             {loading && <div>Loading...</div>}
-            {suggestions.map((suggestion) => {
+            {suggestions.map((suggestion, i) => {
+              const id = i;
               const className = suggestion.active
                 ? "suggestion-item--active"
                 : "suggestion-item";
@@ -59,6 +66,7 @@ function SearchBar() {
                 <div
                   {...getSuggestionItemProps(suggestion, {
                     className,
+                    id,
                     style,
                   })}
                 >
