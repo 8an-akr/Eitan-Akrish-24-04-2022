@@ -6,6 +6,7 @@ const initialState = {
     latLng: {
       lat: 32.0852999,
       lng: 34.78176759999999,
+      unit: "metric",
     },
   },
 };

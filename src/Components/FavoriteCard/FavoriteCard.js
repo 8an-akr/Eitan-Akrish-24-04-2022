@@ -5,14 +5,20 @@ import { weather } from "../../app/features/page/pageSlice";
 import { cityWeather } from "../../app/features/cityWeather/cityWeatherSlice";
 import { searchValue } from "../../app/features/searchBar/searchSlice";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 function FavoriteCard({ favorite }) {
   const dispatch = useDispatch();
 
-  const { data, error, isLoading } = useGetWeatherQuery(favorite?.latLng);
+  const unit = useSelector((state) => state.page.settings.unit);
+  const { lat, lng } = favorite?.latLng;
+  const q = { lat, lng, unit };
+
+  const { data, error, isLoading } = useGetWeatherQuery(q);
   if (error || isLoading) {
     console.log(error || isLoading);
   }
+
   const selectFavoriteHandler = (favorite) => {
     dispatch(cityWeather(data));
     dispatch(searchValue(favorite));

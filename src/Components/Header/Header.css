@@ -1,15 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
 .header {
   display: flex;
   justify-content: space-between;
   padding: 4%;
-  background-color: rgba(48, 130, 224, 0.8);
+  background-color: rgba(48, 130, 224, 0.564);
   border-radius: 3em;
   align-items: center;
 }
 
 .logo {
   font-size: 1.5em;
-  font-weight: bold;
+  font-family: "Pacifico", cursive;
 }
 
 .page-options {

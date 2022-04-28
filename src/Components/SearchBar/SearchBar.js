@@ -19,7 +19,11 @@ function SearchBar() {
     useSelector((state) => state.address.value)
   );
 
-  const { data, error, isLoading } = useGetWeatherQuery(location?.latLng);
+  const unit = useSelector((state) => state.page.settings.unit);
+  const { lat, lng } = location?.latLng;
+  const q = { lat, lng, unit };
+
+  const { data, error, isLoading } = useGetWeatherQuery(q);
   if (error) {
     console.log(error);
   }
@@ -30,9 +34,10 @@ function SearchBar() {
       setAddress(value);
       const result = await geocodeByAddress(value);
       const latLng = await getLatLng(result[0]);
+      const { lat, lng } = latLng;
       const name = result[0].address_components[0].short_name;
-      setLocation({ name, latLng });
-      // dispatch(cityWeather(data));
+      setLocation({ name: name, latLng: { lat, lng, unit } });
+      dispatch(cityWeather(data));
       dispatch(searchValue({ name, latLng }));
       setAddress("");
     } catch (error) {
