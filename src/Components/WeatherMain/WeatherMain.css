@@ -6,6 +6,7 @@
   margin: 1%;
   background-color: rgba(177, 202, 220, 0.535);
   border-radius: 40px;
+  position: relative;
 }
 
 .today {
@@ -52,7 +53,6 @@
 .temp {
   font-size: 4rem;
   font-weight: 400;
-  position: relative;
 }
 
 .address {
@@ -63,9 +63,9 @@
   margin-left: 4px;
 }
 .add-Favorite {
-  height: 4rem;
+  height: 2.5rem;
   position: absolute;
   cursor: pointer;
-  top: 14px;
-  right: -90px;
+  top: 29px;
+  right: 35px;
 }

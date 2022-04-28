@@ -22,6 +22,23 @@ function WeatherMain() {
 
   return (
     <div className="weather-container">
+      {!Boolean(
+        favorites.filter((favorite) => favorite.name === address)[0]
+      ) ? (
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/130/130195.png"
+          alt="add to favorites"
+          className="add-Favorite"
+          onClick={() => dispatch(addFavorite(place))}
+        />
+      ) : (
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/130/130193.png"
+          alt="add to favorites"
+          className="add-Favorite"
+          onClick={() => dispatch(addFavorite(place))}
+        />
+      )}
       <div className="today">
         <div className="placeDateWeather">
           <div className="address">{address}</div>
@@ -39,26 +56,7 @@ function WeatherMain() {
           </div>
         </div>
         <div className="tempHighLow">
-          <div className="temp">
-            {Math.round(weather?.current.feels_like)}°
-            {!Boolean(
-              favorites.filter((favorite) => favorite.name === address)[0]
-            ) ? (
-              <img
-                src="https://cdn-icons-png.flaticon.com/128/121/121729.png"
-                alt="add to favorites"
-                className="add-Favorite"
-                onClick={() => dispatch(addFavorite(place))}
-              />
-            ) : (
-              <img
-                src="https://cdn-icons-png.flaticon.com/128/263/263417.png"
-                alt="add to favorites"
-                className="add-Favorite"
-                onClick={() => dispatch(addFavorite(place))}
-              />
-            )}
-          </div>
+          <div className="temp">{Math.round(weather?.current.feels_like)}°</div>
           <div className="highLow">
             {Math.round(weather?.daily[0].temp.min)}° -{" "}
             {Math.round(weather?.daily[0].temp.max)}°

@@ -20,8 +20,10 @@ function SearchBar() {
   );
 
   const { data, error, isLoading } = useGetWeatherQuery(location?.latLng);
-  console.log(data, error, isLoading);
-  dispatch(cityWeather(data));
+  if (error) {
+    console.log(error);
+  }
+  if (data !== 0) dispatch(cityWeather(data));
 
   const handleSelect = async (value) => {
     try {
@@ -30,6 +32,7 @@ function SearchBar() {
       const latLng = await getLatLng(result[0]);
       const name = result[0].address_components[0].short_name;
       setLocation({ name, latLng });
+      // dispatch(cityWeather(data));
       dispatch(searchValue({ name, latLng }));
       setAddress("");
     } catch (error) {

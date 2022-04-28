@@ -4,14 +4,11 @@ import FavoriteCard from "../FavoriteCard/FavoriteCard.js";
 
 function FavoritesMain() {
   const favorites = useSelector((state) => state.favorites.value);
+
   return (
     favorites &&
-    favorites.map((favorite) => {
-      return (
-        <div className="weather-container">
-          <FavoriteCard favorite={favorite} />
-        </div>
-      );
+    favorites.map((favorite, i) => {
+      return <FavoriteCard key={i} favorite={favorite} />;
     })
   );
 }
