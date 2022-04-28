@@ -1,0 +1,72 @@
+.weather-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 1%;
+  background-color: rgba(177, 202, 220, 0.535);
+  border-radius: 40px;
+  position: relative;
+}
+
+.today {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 1px;
+  padding: 1px;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.week {
+  display: flex;
+  width: 96%;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.day {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  margin: 1%;
+  padding: 1%;
+}
+
+.placeDateWeather {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 1% 1% 1% 10%;
+  padding: 1%;
+}
+.tempHighLow {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-right: 19%;
+}
+.temp {
+  font-size: 4rem;
+  font-weight: 400;
+}
+
+.address {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+.highLow {
+  margin-left: 4px;
+}
+.add-Favorite {
+  height: 2.5rem;
+  position: absolute;
+  cursor: pointer;
+  top: 29px;
+  right: 35px;
+}

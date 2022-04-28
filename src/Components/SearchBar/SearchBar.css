@@ -1,9 +1,41 @@
-.css-md26zr-MuiInputBase-root-MuiOutlinedInput-root {
-  width: 95% !important;
-  border-radius: 3rem !important;
-  left: 3% !important;
+.autocomplete {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+  margin-top: 2px;
+  position: relative;
 }
 
-.css-14s5rfu-MuiFormLabel-root-MuiInputLabel-root {
-  left: 3% !important;
+.location-search-input {
+  border-radius: 2rem;
+  width: 90%;
+  padding: 10px;
+  font-size: 1.1rem;
+  margin-top: 1px;
+}
+
+.autocomplete-dropdown-container {
+  width: 85%;
+  position: absolute;
+  background-color: rgba(242, 240, 240, 0.88);
+  border-radius: 1em;
+  top: 45.667px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.suggestion-item--active {
+  background-color: rgba(39, 122, 217, 0.218);
+  cursor: pointer;
+}
+
+.suggestion-item {
+  background-color: rgba(242, 240, 240, 0);
+  cursor: pointer;
+}
+.suggestion {
+  border-radius: 3em;
+  margin: 1px;
+  padding: 10px;
 }
