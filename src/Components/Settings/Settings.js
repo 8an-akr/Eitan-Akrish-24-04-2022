@@ -14,8 +14,8 @@ function Settings() {
   const localSettings = JSON.parse(localStorage.getItem("settings"));
   if (localSettings) {
     if (localSettings.settings.theme === "dark") {
-      document.getElementById("html").className = "dark";
-    } else document.getElementById("html").className = "";
+      document.getElementById("root").className = "dark";
+    } else document.getElementById("root").className = "";
   }
 
   return (
