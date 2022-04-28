@@ -23,7 +23,7 @@ function SearchBar() {
   const { lat, lng } = location?.latLng;
   const q = { lat, lng, unit };
 
-  const { data, error, isLoading } = useGetWeatherQuery(q);
+  const { data, error } = useGetWeatherQuery(q);
   if (error) {
     console.log(error);
   }
