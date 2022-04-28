@@ -1,0 +1,5 @@
+.favorite-card {
+  display: flex;
+  background-color: rgba(177, 202, 220, 0.535);
+  border-radius: 40px;
+}

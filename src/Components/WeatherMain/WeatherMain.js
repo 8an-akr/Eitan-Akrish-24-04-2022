@@ -1,16 +1,20 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import WeatherWeekDay from "../WeatherWeekDay/WeatherWeekDay";
+import { addFavorite } from "../../app/features/favorites/favoritesSlice";
 import "./WeatherMain.css";
 
 function WeatherMain() {
+  const dispatch = useDispatch();
   const weather = useSelector((state) => state.cityWeather.value);
-  const address = useSelector((state) => state.address.value.name);
+  const place = useSelector((state) => state.address.value);
+  const favorites = useSelector((state) => state.favorites.value);
+
+  const address = place.name;
 
   const d = Date(weather?.daily[0].dt).toString();
   const todays = d.split(" ");
 
-  console.log(todays);
   const year = todays[3];
   const month = todays[1];
   const day = todays[2];
@@ -35,7 +39,26 @@ function WeatherMain() {
           </div>
         </div>
         <div className="tempHighLow">
-          <div className="temp">{Math.round(weather?.current.feels_like)}°</div>
+          <div className="temp">
+            {Math.round(weather?.current.feels_like)}°
+            {!Boolean(
+              favorites.filter((favorite) => favorite.name === address)[0]
+            ) ? (
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/121/121729.png"
+                alt="add to favorites"
+                className="add-Favorite"
+                onClick={() => dispatch(addFavorite(place))}
+              />
+            ) : (
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/263/263417.png"
+                alt="add to favorites"
+                className="add-Favorite"
+                onClick={() => dispatch(addFavorite(place))}
+              />
+            )}
+          </div>
           <div className="highLow">
             {Math.round(weather?.daily[0].temp.min)}° -{" "}
             {Math.round(weather?.daily[0].temp.max)}°

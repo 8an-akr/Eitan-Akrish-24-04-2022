@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./SearchBar.css";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -56,18 +56,14 @@ function SearchBar() {
             {suggestions.map((suggestion, i) => {
               const id = i;
               const className = suggestion.active
-                ? "suggestion-item--active"
-                : "suggestion-item";
-              // inline style for demonstration purpose
-              const style = suggestion.active
-                ? { backgroundColor: "#fafafa", cursor: "pointer" }
-                : { backgroundColor: "#ffffff", cursor: "pointer" };
+                ? "suggestion suggestion-item--active"
+                : "suggestion suggestion-item";
               return (
                 <div
+                  key={id}
                   {...getSuggestionItemProps(suggestion, {
                     className,
                     id,
-                    style,
                   })}
                 >
                   <span>{suggestion.description}</span>

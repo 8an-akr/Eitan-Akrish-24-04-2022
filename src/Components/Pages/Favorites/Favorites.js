@@ -4,7 +4,7 @@ import Header from "../../Header/Header";
 
 function Favorites() {
   return (
-    <div>
+    <div className="container">
       <Header />
       <FavoritesMain />
     </div>
